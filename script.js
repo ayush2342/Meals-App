@@ -17,13 +17,12 @@ if (!localStorage.getItem("favouriteArray")) {
 // Function to fetch and display more details about a meal
 async function moreDetails() {
   let id = this.id;
-  const response = await fetch(`http://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+  const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
   const data = await response.json();
 
   mealsDiv.innerHTML = '';
 
   let meals = data.meals[0];
-  console.log(data.meals[0]);
 
   const div = document.createElement('div');
   div.classList.add('details-page');
@@ -96,7 +95,7 @@ function displaySearchResults() {
 
 // Function to display a random meal image
 function displayRandomImage() {
-  URL = `http://www.themealdb.com/api/json/v1/1/random.php`;
+  URL = `https://www.themealdb.com/api/json/v1/1/random.php`;
   createMeals(URL);
 }
 
@@ -105,12 +104,12 @@ async function displayFavoriteMeals() {
   mealsDiv.innerHTML = '';
 
   for (let meal of favouriteArray) {
-    console.log(meal);
-    const response = await fetch(`http://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`);
+    
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`);
     const data = await response.json();
 
     let meals = data.meals[0];
-    console.log(data.meals[0]);
+    
 
     const div = document.createElement('div');
     div.classList.add('images');
